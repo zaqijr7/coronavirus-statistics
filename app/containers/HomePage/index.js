@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 /*
@@ -11,44 +12,57 @@ import React from 'react';
 
 // import component
 import CardChart from '../../components/CardChart';
-import ChartUserActive from '../../components/ChartUserActive';
+import CardDataContinent from '../../components/CardDataContinent';
+import CardUserActive from '../../components/CardUserActive';
 import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
 
 export default function HomePage(props) {
-  console.log(props.location);
+  const location = props.location.pathname.split('/');
   return (
     <>
       <Navbar />
       <div className="container-fluid m-0 p-0">
         <div className="row m-0">
-          <Sidebar />
+          <Sidebar location={props.location.pathname} />
           <div className="col-12 col-md-10 body-section">
             <div className="row">
               <div className="col-12 mt-4 px-3">
-                <span className="fw-bold fs-5">
-                  Data Confirmed Corona Virus
-                </span>
+                <span className="fw-bold fs-5">{`Coronavirus ${
+                  location[1] === '' ? 'confirmed' : location[1]
+                } data`}</span>
               </div>
             </div>
             <div className="row my-4">
               <div className="col-12 col-md-7">
-                <CardChart />
+                <CardChart location={props.location.pathname} />
               </div>
               <div className="col-12 col-md-5 mt-md-0 mt-4">
-                <div className="card">
-                  <div className="card-body card-user-active">
-                    <div className="row">
-                      <p>Active user right now</p> <br />
-                      <span className="fs-2">479</span>
-                    </div>
-                    <div className="row">
-                      <small className="my-3">Page views per minute</small>
-                      <hr />
-                    </div>
-                    <div className="row">
-                      <ChartUserActive />
-                    </div>
+                <CardUserActive />
+              </div>
+            </div>
+            <div className="row my-4">
+              <div className="col-12 col-md-6">
+                <div className="row">
+                  <span className="fw-bold fs-5m my-3">
+                    Coronavirus in Asia
+                  </span>
+                </div>
+                <div className="row">
+                  <div className="col-12">
+                    <CardDataContinent />
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-md-6">
+                <div className="row">
+                  <span className="fw-bold fs-5m my-3">
+                    Coronavirus in Europe
+                  </span>
+                </div>
+                <div className="row">
+                  <div className="col-12">
+                    <CardDataContinent />
                   </div>
                 </div>
               </div>

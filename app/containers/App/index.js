@@ -20,6 +20,8 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/recovered" component={HomePage} />
+        <Route exact path="/deaths" component={HomePage} />
         <Route component={NotFoundPage} />
       </Switch>
       {/* <GlobalStyle /> */}

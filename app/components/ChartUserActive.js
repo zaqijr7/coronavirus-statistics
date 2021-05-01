@@ -66,7 +66,13 @@ function ChartUserActive() {
     <div className="app">
       <div className="row">
         <div className="mixed-chart">
-          <Chart options={options} series={series} type="bar" width="100%" />
+          <Chart
+            options={options}
+            series={series}
+            type="bar"
+            width="100%"
+            height="100%"
+          />
         </div>
       </div>
     </div>

@@ -30,3 +30,11 @@ body {
   background-color: #4185F5;
   color: white;
 }
+
+.border-bottom-hair {
+  border-bottom: 0.4px solid #71A4F8;
+}
+
+.height-card-costum {
+  height: 755px;
+}
