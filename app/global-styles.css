@@ -1,0 +1,32 @@
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #F3F3F4;
+}
+
+.logo-brand{
+  height: 45px;
+  width: auto;
+}
+
+.photo-profile{
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.badge-costum {
+  height: 20px !important;
+  font-size: 10px;
+  right: -8px;
+  top: -8px;
+}
+
+.sidebar {
+  height: auto;
+}
+
+.card-user-active {
+  background-color: #4185F5;
+  color: white;
+}
