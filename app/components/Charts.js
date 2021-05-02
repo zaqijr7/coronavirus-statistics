@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+/* eslint-disable indent */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/prop-types */
+import React from 'react';
+import moment from 'moment';
 import Chart from 'react-apexcharts';
 
-function Charts() {
+function Charts(props) {
+  const confirmed = props.data.map(item => item.totalConfirmed);
+  const recovered = props.data.map(item => item.recovered.total);
+  const deaths = props.data.map(item => item.deaths.total);
+  const xaxisData = props.data.map(item =>
+    moment(item.reportDate).format('ll'),
+  );
   const options = {
     chart: {
       id: 'basic-bar',
@@ -10,22 +20,35 @@ function Charts() {
       },
     },
     xaxis: {
-      categories: ['Jan', 'Feb', 'March', 'April'],
+      categories: xaxisData,
+      type: 'datetime',
     },
     markers: {
       size: 8,
     },
     yaxis: {
       opposite: true,
+      labels: {
+        formatter: val => {
+          const result = val / 1000;
+          return `${result}k`;
+        },
+      },
     },
   };
 
-  const [series, setSeries] = useState([
+  const series = [
     {
       name: 'series-1',
-      data: [30, 40, 45, 50],
+      data:
+        props.location === '/'
+          ? confirmed
+          : props.location === '/recovered'
+          ? recovered
+          : deaths,
     },
-  ]);
+  ];
+  console.log(props.location);
   return (
     <div className="app">
       <div className="row">

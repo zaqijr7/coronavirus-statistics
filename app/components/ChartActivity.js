@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Chart from 'react-apexcharts';
 
-function ChartUserActive() {
+function ChartActivity() {
   const options = {
     chart: {
       id: 'basic-bar',
@@ -9,59 +9,40 @@ function ChartUserActive() {
         show: false,
       },
     },
-    colors: '#8EB6F9',
+    colors: '#3366D6',
     xaxis: {
-      categories: [
-        'Jan',
-        'Feb',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'Sept',
-        ' Oct',
-        'Nov',
-        'Dec',
-      ],
+      categories: ['Jan', 'Feb', 'March', 'April', 'May'],
       labels: {
-        show: false,
+        show: true,
       },
       axisBorder: {
-        show: false,
+        show: true,
       },
       axisTicks: {
-        show: false,
+        show: true,
       },
     },
     markers: {
       size: 8,
     },
     yaxis: {
-      show: false,
+      show: true,
+      opposite: true,
     },
     grid: {
-      show: false,
+      show: true,
     },
     dataLabels: {
       enabled: false,
     },
-    plotOptions: {
-      bar: {
-        dataLabels: {
-          position: 'top', // top, center, bottom
-        },
-      },
-    },
   };
 
-  const series = [
+  const [series, setSeries] = useState([
     {
       name: 'series-1',
-      data: [30, 40, 45, 50, 32, 54, 56, 76, 23, 42, 12, 45],
+      data: [30, 40, 45, 50, 32],
     },
-  ];
+  ]);
   return (
     <div className="app">
       <div className="row">
@@ -71,7 +52,7 @@ function ChartUserActive() {
             series={series}
             type="bar"
             width="100%"
-            height={138}
+            height={450}
           />
         </div>
       </div>
@@ -79,4 +60,4 @@ function ChartUserActive() {
   );
 }
 
-export default ChartUserActive;
+export default ChartActivity;

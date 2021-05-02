@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
 import React from 'react';
 
-function CardDataContinent() {
+function CardDataContinent(props) {
+  console.log(props);
   return (
     <div className="card">
       <div className="card-body p-3">
@@ -15,36 +17,14 @@ function CardDataContinent() {
               <td className="text-muted">Recovered</td>
               <td className="text-muted">Deaths</td>
             </tr>
-            <tr>
-              <td>Mark</td>
-              <td className="text-center">25</td>
-              <td className="text-center">345</td>
-              <td className="text-center">345</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td className="text-center">25</td>
-              <td className="text-center">345</td>
-              <td className="text-center">345</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td className="text-center">25</td>
-              <td className="text-center">345</td>
-              <td className="text-center">345</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td className="text-center">25</td>
-              <td className="text-center">345</td>
-              <td className="text-center">345</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td className="text-center">25</td>
-              <td className="text-center">345</td>
-              <td className="text-center">345</td>
-            </tr>
+            {props.country.map((item, index) => (
+              <tr key={index.toString()}>
+                <td>{item}</td>
+                <td className="text-center">25</td>
+                <td className="text-center">345</td>
+                <td className="text-center">345</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -58,7 +38,7 @@ function CardDataContinent() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Last 4 months
+                Last 4 days
               </button>
               <ul className="dropdown-menu">
                 <li>

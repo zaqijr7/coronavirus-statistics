@@ -6,6 +6,7 @@ import RowDown from './RowDown';
 import RowUp from './RowUp';
 
 function CardChart(props) {
+  const currentConfirmed = props.data[props.data.length - 1];
   return (
     <div className="card">
       <div className="card-header bg-white m-0 px-0 py-0">
@@ -31,7 +32,11 @@ function CardChart(props) {
                     props.location === '/' ? 'text-dark' : 'text-muted'
                   }`}
                 >
-                  52k
+                  {currentConfirmed !== undefined &&
+                    (Math.round(currentConfirmed.totalConfirmed / 1000) *
+                      1000) /
+                      1000}
+                  k
                 </span>
               </div>
               <RowUp />
@@ -60,7 +65,11 @@ function CardChart(props) {
                     props.location === '/recovered' ? 'text-dark' : 'text-muted'
                   }`}
                 >
-                  33k
+                  {currentConfirmed !== undefined &&
+                    (Math.round(currentConfirmed.recovered.total / 1000) *
+                      1000) /
+                      1000}
+                  k
                 </span>
               </div>
               <RowUp />
@@ -89,7 +98,10 @@ function CardChart(props) {
                     props.location === '/deaths' ? 'text-dark' : 'text-muted'
                   }`}
                 >
-                  78k
+                  {currentConfirmed !== undefined &&
+                    (Math.round(currentConfirmed.deaths.total / 1000) * 1000) /
+                      1000}
+                  k
                 </span>
               </div>
               <RowDown />
@@ -97,11 +109,11 @@ function CardChart(props) {
           </div>
         </div>
         <div className="row">
-          <span className="text-muted ms-3 mb-3">The last 4 months</span>
+          <span className="text-muted ms-3 mb-3">The last 4 days</span>
         </div>
       </div>
       <div className="card-body">
-        <Charts />
+        <Charts location={props.location} data={props.data} />
       </div>
       <div className="card-footer bg-white">
         <div className="btn-group my-0 py-0">
@@ -111,7 +123,7 @@ function CardChart(props) {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Last 4 months
+            Last 4 days
           </button>
           <ul className="dropdown-menu">
             <li>
